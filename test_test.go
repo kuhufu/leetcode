@@ -71,3 +71,65 @@ func Test_mergeK(t *testing.T) {
 
 	fmt.Println(list)
 }
+
+func TestAddTwoNumbersII(t *testing.T) {
+	//(7 -> 2 -> 4 -> 3) + (5 -> 6 -> 4)
+	l1 := &ListNode{7, &ListNode{2, &ListNode{4, &ListNode{3, nil}}}}
+	l2 := &ListNode{5, &ListNode{6, &ListNode{4, nil}}}
+	node := addTwoNumbers(l1, l2)
+
+	fmt.Println(node)
+}
+
+func TestLongestOnes(t *testing.T) {
+	tests := []struct {
+		A   []int
+		K   int
+		out int
+	}{
+		{
+			A:   []int{1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0},
+			K:   2,
+			out: 6,
+		},
+		{
+			A:   []int{0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1},
+			K:   3,
+			out: 10,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(fmt.Sprint(test.A), func(t *testing.T) {
+			out := longestOnes(test.A, test.K)
+			if test.out != out {
+				t.Errorf("want %v, but got %v", test.out, out)
+			}
+		})
+	}
+}
+
+func TestConvertToTitle(t *testing.T) {
+	tests := []struct {
+		N    int
+		want string
+	}{
+		{1, "A"},
+		{26, "Z"},
+		{28, "AB"},
+		{52, "AZ"},
+		{701, "ZY"},
+		{26 * 26, "YZ"},
+		{26*26 + 1, "ZA"},
+		{26 * 26 * 26, "YYZ"},
+	}
+
+	for _, test := range tests {
+		t.Run(fmt.Sprint(test.N), func(t *testing.T) {
+			out := convertToTitle(test.N)
+			if test.want != out {
+				t.Errorf("want %v, but got %v", test.want, out)
+			}
+		})
+	}
+}
