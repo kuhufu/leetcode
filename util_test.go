@@ -151,3 +151,33 @@ func Test_listArr2str(t *testing.T) {
 		})
 	}
 }
+
+func Test_str2Tree(t *testing.T) {
+	tests := []struct {
+		str  string
+		want *TreeNode
+	}{
+		{
+			"[1,2,3,null,5,null,4]",
+			nil,
+		},
+		{
+			"[1,null,3,null]",
+			nil,
+		},
+		{
+			"[1,2,3,null, 5]",
+			nil,
+		},
+	}
+
+	for _, test := range tests {
+		test := test
+		t.Run(test.str, func(t *testing.T) {
+			res := str2Tree(test.str)
+			if !Equal(test.want, res) {
+				t.Errorf("want %v, but got %v", test.want, res)
+			}
+		})
+	}
+}

@@ -1,15 +1,12 @@
 package leetcode
 
 import (
+	"encoding/json"
+	"fmt"
 	"reflect"
 	"strconv"
 	"strings"
 )
-
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
 
 func Min(a, b int) int {
 	if a < b {
@@ -80,19 +77,23 @@ func listArr2Str(arr []*ListNode) string {
 
 //input format:
 // [1,2,3,4]
-// 1,2,3,4
-// 1, 2, 3, 4
 func str2Slice(s string) []int {
-	s = strings.Replace(s, "[", "", -1)
-	s = strings.Replace(s, "]", "", -1)
-	s = strings.Replace(s, " ", "", -1)
-
-	items := strings.Split(s, ",")
-
 	var res []int
+	err := json.Unmarshal([]byte(s), &res)
+	if err != nil {
+		panic(err)
+	}
 
-	for _, item := range items {
-		res = append(res, Atoi(item))
+	return res
+}
+
+//input format:
+// [[1,2,3,4],[1,2,3,4]]
+func str22DSlice(s string) [][]int {
+	var res [][]int
+	err := json.Unmarshal([]byte(s), &res)
+	if err != nil {
+		panic(err)
 	}
 
 	return res
@@ -135,7 +136,137 @@ func Equal(a, b interface{}) bool {
 	switch a.(type) {
 	case *ListNode:
 		return listEqual(a.(*ListNode), b.(*ListNode))
+	case *TreeNode:
+		return treeEqual(a.(*TreeNode), b.(*TreeNode))
 	default:
 		return reflect.DeepEqual(a, b)
+	}
+}
+
+//format:
+//[1,2,3,4],层序遍历的结果，如果出现null，这表示该节点为空
+func str2Tree(s string) *TreeNode {
+	var arr []interface{}
+
+	err := json.Unmarshal([]byte(s), &arr)
+	if err != nil {
+		panic(err)
+	}
+
+	if len(arr) == 0 {
+		return nil
+	}
+
+	var queue []*TreeNode
+
+	for _, v := range arr {
+		if v == nil {
+			queue = append(queue, nil)
+		} else {
+			queue = append(queue, &TreeNode{Val: int(v.(float64))})
+		}
+	}
+
+	for i := 0; i < len(queue); i++ {
+		if queue[i] == nil {
+			continue
+		}
+
+		if i*2+1 >= len(queue) {
+			break
+		}
+		queue[i].Left = queue[i*2+1]
+
+		if i*2+2 >= len(queue) {
+			break
+		}
+		queue[i].Right = queue[i*2+2]
+	}
+
+	return queue[0]
+}
+
+func treeEqual(t1, t2 *TreeNode) bool {
+	if t1 == nil && t2 == nil {
+		return true
+	}
+
+	if t1 != nil && t2 == nil || t1 == nil && t2 != nil {
+		return false
+	}
+
+	if t1.Val != t2.Val {
+		return false
+	}
+
+	left := treeEqual(t1.Left, t2.Left)
+	if !left {
+		return false
+	}
+
+	right := treeEqual(t1.Right, t2.Right)
+	return right
+}
+
+func tree2Str(root *TreeNode) string {
+	queue := []*TreeNode{root}
+	var nodes []interface{}
+
+	for len(queue) != 0 {
+		size := len(queue)
+
+		var tmpArr []interface{}
+
+		for _, v := range queue {
+			if v == nil {
+				tmpArr = append(tmpArr, nil)
+			} else {
+				tmpArr = append(tmpArr, v.Val)
+			}
+		}
+
+		nodes = append(nodes, tmpArr...)
+		for i := 0; i < size; i++ {
+			if queue[i] == nil {
+				queue = append(queue, nil)
+				queue = append(queue, nil)
+				continue
+			}
+
+			queue = append(queue, queue[i].Left)
+			queue = append(queue, queue[i].Right)
+		}
+
+		queue = queue[size:]
+
+		//去掉末尾的 nil
+		var i int
+		for i = len(queue) - 1; i >= 0; i-- {
+			if queue[i] != nil {
+				break
+			}
+		}
+
+		queue = queue[:i+1]
+	}
+
+	bytes, err := json.Marshal(&nodes)
+	if err != nil {
+		panic(err)
+	}
+
+	return string(bytes)
+}
+
+func Str(v interface{}) string {
+	switch v := v.(type) {
+	case *TreeNode:
+		return tree2Str(v)
+	case *ListNode:
+		return list2Str(v)
+	case []*ListNode:
+		return listArr2Str(v)
+	default:
+		return fmt.Sprint(v)
 	}
 }
