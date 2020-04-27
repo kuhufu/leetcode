@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -18,10 +17,10 @@ func Test_canJump(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		t.Run(fmt.Sprint(test.nums), func(t *testing.T) {
-			out := canJump(test.nums)
-			if test.want != out {
-				t.Errorf("want %v, but got %v", test.want, out)
+		t.Run(Str(test.nums), func(t *testing.T) {
+			res := canJump(test.nums)
+			if !Equal(test.want, res) {
+				t.Errorf("want %v, but got %v", test.want, res)
 			}
 		})
 	}
