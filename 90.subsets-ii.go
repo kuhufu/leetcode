@@ -39,13 +39,15 @@ func subsetsWithDup(nums []int) [][]int {
 
 	f = func(n int, tmp []int) {
 		if n >= len(arr) {
-			ans = append(ans, tmp)
+			ans = append(ans, append(tmp[:0:0], tmp...))
 			return
 		}
 
-		for i := 0; i <= len(arr[n]); i++ {
-			tmp := append(tmp[:len(tmp):len(tmp)], arr[n][:i]...)
+		l := len(tmp)
+		for i := len(arr[n]); i >= 0; i-- {
+			tmp = append(tmp, arr[n][:i]...)
 			f(n+1, tmp)
+			tmp = tmp[:l]
 		}
 	}
 
