@@ -8,11 +8,11 @@ func Test_singleNumber(t *testing.T) {
 		want int
 	}{
 		{
-			str2Slice("[2,2,1]"),
+			Str2Slice("[2,2,1]"),
 			1,
 		},
 		{
-			str2Slice("[4,1,2,1,2]"),
+			Str2Slice("[4,1,2,1,2]"),
 			4,
 		},
 	}

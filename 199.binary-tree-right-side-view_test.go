@@ -10,12 +10,12 @@ func Test_rightSideView(t *testing.T) {
 		want []int
 	}{
 		{
-			str2Tree("[1,2,3,null,5,null,4]"),
-			str2Slice("[1, 3, 4]"),
+			Str2Tree("[1,2,3,null,5,null,4]"),
+			Str2Slice("[1, 3, 4]"),
 		},
 		{
-			str2Tree("[1,2,3,4]"),
-			str2Slice("[1, 3, 4]"),
+			Str2Tree("[1,2,3,4]"),
+			Str2Slice("[1, 3, 4]"),
 		},
 	}
 

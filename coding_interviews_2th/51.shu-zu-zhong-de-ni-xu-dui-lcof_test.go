@@ -34,6 +34,4 @@ func Test_reversePairs(t *testing.T) {
 			}
 		})
 	}
-
-	reversePairs([]int{7, 7, 5, 6, 7, 4})
 }

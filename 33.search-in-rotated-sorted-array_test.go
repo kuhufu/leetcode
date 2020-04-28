@@ -11,12 +11,12 @@ func Test_search(t *testing.T) {
 		want   int
 	}{
 		{
-			str2Slice("[4,5,6,7,0,1,2]"),
+			Str2Slice("[4,5,6,7,0,1,2]"),
 			0,
 			4,
 		},
 		{
-			str2Slice("[4,5,6,7,0,1,2]"),
+			Str2Slice("[4,5,6,7,0,1,2]"),
 			3,
 			-1,
 		},

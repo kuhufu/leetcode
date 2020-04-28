@@ -46,7 +46,7 @@ func Test_str2Slice(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(test.s, func(t *testing.T) {
-			res := str2Slice(test.s)
+			res := Str2Slice(test.s)
 			if !Equal(res, test.want) {
 				t.Errorf("want %v, but got %v", test.want, res)
 			}
@@ -174,7 +174,7 @@ func Test_str2Tree(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(test.str, func(t *testing.T) {
-			res := str2Tree(test.str)
+			res := Str2Tree(test.str)
 			if !Equal(test.want, res) {
 				t.Errorf("want %v, but got %v", test.want, res)
 			}

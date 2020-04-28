@@ -10,24 +10,24 @@ func Test_shortestPathBinaryMatrix(t *testing.T) {
 		want int
 	}{
 		{
-			str22DSlice("[[1]]"),
+			Str22DSlice("[[1]]"),
 			-1,
 		},
 		{
-			str22DSlice("[[0]]"),
+			Str22DSlice("[[0]]"),
 			1,
 		},
 		{
-			str22DSlice("[[1,0,0],[1,1,0],[1,1,0]]"),
+			Str22DSlice("[[1,0,0],[1,1,0],[1,1,0]]"),
 			-1,
 		},
 
 		{
-			str22DSlice("[[0,0,0],[1,1,0],[1,1,0]]"),
+			Str22DSlice("[[0,0,0],[1,1,0],[1,1,0]]"),
 			4,
 		},
 		{
-			str22DSlice("[[0,1],[1,0]]"),
+			Str22DSlice("[[0,1],[1,0]]"),
 			2,
 		},
 	}

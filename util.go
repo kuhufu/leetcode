@@ -77,7 +77,7 @@ func listArr2Str(arr []*ListNode) string {
 
 //input format:
 // [1,2,3,4]
-func str2Slice(s string) []int {
+func Str2Slice(s string) []int {
 	var res []int
 	err := json.Unmarshal([]byte(s), &res)
 	if err != nil {
@@ -89,7 +89,7 @@ func str2Slice(s string) []int {
 
 //input format:
 // [[1,2,3,4],[1,2,3,4]]
-func str22DSlice(s string) [][]int {
+func Str22DSlice(s string) [][]int {
 	var res [][]int
 	err := json.Unmarshal([]byte(s), &res)
 	if err != nil {
@@ -145,7 +145,7 @@ func Equal(a, b interface{}) bool {
 
 //format:
 //[1,2,3,4],层序遍历的结果，如果出现null，这表示该节点为空
-func str2Tree(s string) *TreeNode {
+func Str2Tree(s string) *TreeNode {
 	var arr []interface{}
 
 	err := json.Unmarshal([]byte(s), &arr)
