@@ -181,3 +181,25 @@ func Test_str2Tree(t *testing.T) {
 		})
 	}
 }
+
+func Test_Str(t *testing.T) {
+	tests := []struct {
+		args []interface{}
+		want string
+	}{
+		{
+			[]interface{}{1, 2, 3},
+			"1, 2, 3",
+		},
+	}
+
+	for _, test := range tests {
+		test := test
+		t.Run(fmt.Sprint(test.args), func(t *testing.T) {
+			res := Str(test.args...)
+			if !Equal(test.want, res) {
+				t.Errorf("want %v, but got %v", test.want, res)
+			}
+		})
+	}
+}

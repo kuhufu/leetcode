@@ -257,7 +257,16 @@ func tree2Str(root *TreeNode) string {
 	return string(bytes)
 }
 
-func Str(v interface{}) string {
+func Str(args ...interface{}) string {
+	var res []string
+	for _, arg := range args {
+		res = append(res, str(arg))
+	}
+
+	return strings.Join(res, ", ")
+}
+
+func str(v interface{}) string {
 	switch v := v.(type) {
 	case *TreeNode:
 		return tree2Str(v)
@@ -265,6 +274,8 @@ func Str(v interface{}) string {
 		return list2Str(v)
 	case []*ListNode:
 		return listArr2Str(v)
+	case string:
+		return v
 	default:
 		bytes, err := json.Marshal(v)
 		if err != nil {
