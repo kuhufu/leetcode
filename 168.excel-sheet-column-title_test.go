@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -21,10 +20,11 @@ func Test_convertToTitle(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		t.Run(fmt.Sprint(test.N), func(t *testing.T) {
-			out := convertToTitle(test.N)
-			if test.want != out {
-				t.Errorf("want %v, but got %v", test.want, out)
+		test := test
+		t.Run(Str(test.N), func(t *testing.T) {
+			res := convertToTitle(test.N)
+			if !Equal(test.want, res) {
+				t.Errorf("want %v, but got %v", test.want, res)
 			}
 		})
 	}
