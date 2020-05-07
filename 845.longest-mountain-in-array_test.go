@@ -24,9 +24,9 @@ func Test_longestMountain(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(Str(test.A), func(t *testing.T) {
-			out := longestMountain(test.A)
-			if test.want != out {
-				t.Errorf("want %v, but got %v", test.want, out)
+			res := longestMountain(test.A)
+			if !Equal(test.want, res) {
+				t.Errorf("want %v, but got %v", test.want, res)
 			}
 		})
 	}

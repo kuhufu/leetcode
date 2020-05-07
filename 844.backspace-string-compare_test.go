@@ -31,9 +31,9 @@ func Test_backspaceCompare(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(Str(test.S, test.T), func(t *testing.T) {
-			out := backspaceCompare(test.S, test.T)
-			if test.want != out {
-				t.Errorf("want %v, but got %v", test.want, out)
+			res := backspaceCompare(test.S, test.T)
+			if test.want != res {
+				t.Errorf("want %v, but got %v", test.want, res)
 			}
 		})
 	}
