@@ -166,45 +166,38 @@ func Str2Tree(s string) *TreeNode {
 		}
 	}
 
-	for i := 0; i < len(queue); i++ {
+	for i, j := 0, 1; i < len(queue); i++ {
 		if queue[i] == nil {
 			continue
 		}
 
-		if i*2+1 >= len(queue) {
-			break
+		if j < len(queue) {
+			queue[i].Left = queue[j]
 		}
-		queue[i].Left = queue[i*2+1]
 
-		if i*2+2 >= len(queue) {
-			break
+		if j+1 < len(queue) {
+			queue[i].Right = queue[j+1]
 		}
-		queue[i].Right = queue[i*2+2]
+
+		j += 2
 	}
 
 	return queue[0]
 }
 
-func treeEqual(t1, t2 *TreeNode) bool {
-	if t1 == nil && t2 == nil {
+func treeEqual(s, t *TreeNode) bool {
+	switch {
+	case s == nil && t == nil:
 		return true
-	}
-
-	if t1 != nil && t2 == nil || t1 == nil && t2 != nil {
+	case s != nil && t == nil:
+		return false
+	case s == nil && t != nil:
+		return false
+	case s.Val != t.Val:
 		return false
 	}
 
-	if t1.Val != t2.Val {
-		return false
-	}
-
-	left := treeEqual(t1.Left, t2.Left)
-	if !left {
-		return false
-	}
-
-	right := treeEqual(t1.Right, t2.Right)
-	return right
+	return treeEqual(s.Left, t.Left) && treeEqual(s.Right, t.Right)
 }
 
 func tree2Str(root *TreeNode) string {
@@ -227,8 +220,6 @@ func tree2Str(root *TreeNode) string {
 		nodes = append(nodes, tmpArr...)
 		for i := 0; i < size; i++ {
 			if queue[i] == nil {
-				queue = append(queue, nil)
-				queue = append(queue, nil)
 				continue
 			}
 
@@ -237,17 +228,17 @@ func tree2Str(root *TreeNode) string {
 		}
 
 		queue = queue[size:]
-
-		//去掉末尾的 nil
-		var i int
-		for i = len(queue) - 1; i >= 0; i-- {
-			if queue[i] != nil {
-				break
-			}
-		}
-
-		queue = queue[:i+1]
 	}
+
+	//去掉末尾的 nil
+	var i int
+	for i = len(nodes) - 1; i >= 0; i-- {
+		if nodes[i] != nil {
+			break
+		}
+	}
+
+	nodes = nodes[:i+1]
 
 	bytes, err := json.Marshal(&nodes)
 	if err != nil {
