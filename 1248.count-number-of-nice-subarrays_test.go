@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -40,9 +39,9 @@ func Test_numberOfSubarrays(t *testing.T) {
 
 	for _, test := range tests {
 		test := test
-		t.Run(fmt.Sprint(test.nums), func(t *testing.T) {
+		t.Run(Str(test.nums), func(t *testing.T) {
 			res := numberOfSubarrays(test.nums, test.k)
-			if res != test.want {
+			if !Equal(test.want, res) {
 				t.Errorf("want %v, but got %v", test.want, res)
 			}
 		})

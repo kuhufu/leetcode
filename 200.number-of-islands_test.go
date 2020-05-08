@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -32,7 +31,7 @@ func Test_numIslands(t *testing.T) {
 
 	for _, test := range tests {
 		test := test
-		t.Run(fmt.Sprint(test.grid), func(t *testing.T) {
+		t.Run(Str(test.grid), func(t *testing.T) {
 			res := numIslands(test.grid)
 			if !Equal(test.want, res) {
 				t.Errorf("want %v, but got %v", test.want, res)

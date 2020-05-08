@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -35,9 +34,9 @@ func Test_maxSideLen(t *testing.T) {
 
 	for _, test := range tests {
 		test := test
-		t.Run(fmt.Sprint(test.threshold), func(t *testing.T) {
+		t.Run(Str(test.matrix), func(t *testing.T) {
 			res := maxSideLength(test.matrix, test.threshold)
-			if test.want != res {
+			if !Equal(test.want, res) {
 				t.Errorf("want %v, but got %v", test.want, res)
 			}
 		})

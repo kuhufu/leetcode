@@ -28,7 +28,7 @@ func Test_mergeKLists(t *testing.T) {
 
 	for _, test := range tests {
 		test := test
-		t.Run(listArr2Str(test.lists), func(t *testing.T) {
+		t.Run(Str(test.lists), func(t *testing.T) {
 			res := mergeKLists2(test.lists)
 
 			if !Equal(res, test.want) {

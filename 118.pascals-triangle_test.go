@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -23,9 +22,8 @@ func Test_generate(t *testing.T) {
 
 	for _, test := range tests {
 		test := test
-		t.Run(fmt.Sprint(test.numRows), func(t *testing.T) {
+		t.Run(Str(test.numRows), func(t *testing.T) {
 			res := generate(test.numRows)
-
 			if !Equal(test.want, res) {
 				t.Errorf("want %v, but got %v", test.want, res)
 			}

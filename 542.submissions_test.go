@@ -41,7 +41,6 @@ func Test_updateMatrix(t *testing.T) {
 		test := test
 		t.Run("", func(t *testing.T) {
 			res := updateMatrix(test.matrix)
-
 			if !Equal(res, test.want) {
 				t.Errorf("want %v, but got %v", test.want, res)
 			}

@@ -46,9 +46,9 @@ func Test_findCheapestPrice(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(fmt.Sprintf("%v, %v, %v", test.src, test.dst, test.K), func(t *testing.T) {
-			out := findCheapestPrice(test.n, test.flights, test.src, test.dst, test.K)
-			if test.want != out {
-				t.Errorf("want %v, but got %v", test.want, out)
+			res := findCheapestPrice(test.n, test.flights, test.src, test.dst, test.K)
+			if !Equal(test.want, res) {
+				t.Errorf("want %v, but got %v", test.want, res)
 			}
 		})
 	}

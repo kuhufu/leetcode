@@ -9,11 +9,26 @@ func Test_canJump(t *testing.T) {
 		nums []int
 		want bool
 	}{
-		{[]int{5, 9, 3, 2, 1, 0, 2, 3, 3, 1, 0, 0}, true},
-		{[]int{0, 2, 3}, false},
-		{[]int{0}, true},
-		{[]int{2, 3, 1, 1, 4}, true},
-		{[]int{3, 2, 1, 0, 4}, false},
+		{
+			Str2Slice("[5,9,3,2,1,0,2,3,3,1,0,0]"),
+			true,
+		},
+		{
+			Str2Slice("[0,2,3]"),
+			false,
+		},
+		{
+			Str2Slice("[0]"),
+			true,
+		},
+		{
+			Str2Slice("[2,3,1,1,4]"),
+			true,
+		},
+		{
+			Str2Slice("[3,2,1,0,4]"),
+			false,
+		},
 	}
 
 	for _, test := range tests {

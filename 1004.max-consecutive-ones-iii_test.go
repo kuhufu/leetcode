@@ -27,7 +27,7 @@ func Test_longestOnes(t *testing.T) {
 		test := test
 		t.Run(fmt.Sprint(test.A), func(t *testing.T) {
 			res := longestOnes(test.A, test.K)
-			if test.want != res {
+			if !Equal(test.want, res) {
 				t.Errorf("want %v, but got %v", test.want, res)
 			}
 		})
