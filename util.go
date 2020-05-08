@@ -2,6 +2,7 @@ package leetcode
 
 import (
 	"encoding/json"
+	"fmt"
 	"reflect"
 	"strconv"
 	"strings"
@@ -267,6 +268,8 @@ func str(v interface{}) string {
 		return listArr2Str(v)
 	case string:
 		return v
+	case []byte, [][]byte:
+		return fmt.Sprint(v)
 	default:
 		bytes, err := json.Marshal(v)
 		if err != nil {
