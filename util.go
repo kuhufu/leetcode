@@ -144,7 +144,7 @@ func Equal(a, b interface{}) bool {
 }
 
 //format:
-//[1,2,3,4],层序遍历的结果，如果出现null，这表示该节点为空
+//[1,2,3,4],层序遍历？的结果，如果出现null，这表示该节点为空
 func Str2Tree(s string) *TreeNode {
 	var arr []interface{}
 
