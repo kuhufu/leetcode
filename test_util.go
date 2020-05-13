@@ -14,13 +14,13 @@ type Test struct {
 	Want Want
 }
 
-func Run(t *testing.T, fn0 interface{}, Params []Test) {
+func Run(t *testing.T, fn0 interface{}, tests []Test) {
 	fn := reflect.ValueOf(fn0)
 	if fn.Kind() != reflect.Func {
 		panic(fmt.Sprintf("Input.Fn:%v is not Func type", fn.Type()))
 	}
 
-	for _, test := range Params {
+	for _, test := range tests {
 		test := test
 		t.Run(Str(test.Args...), func(t *testing.T) {
 			res := toInterfaceSlice(fn.Call(buildArgs(test.Args)))
