@@ -138,6 +138,8 @@ func Equal(a, b interface{}) bool {
 		return listEqual(a.(*ListNode), b.(*ListNode))
 	case *TreeNode:
 		return treeEqual(a.(*TreeNode), b.(*TreeNode))
+	case []reflect.Value:
+		return refEqual(a.([]reflect.Value), b.([]reflect.Value))
 	default:
 		return reflect.DeepEqual(a, b)
 	}
@@ -277,4 +279,22 @@ func str(v interface{}) string {
 		}
 		return string(bytes)
 	}
+}
+
+func refEqual(a, b []reflect.Value) bool {
+	if len(a) != len(b) {
+		return false
+	}
+
+	for i := 0; i < len(a); i++ {
+		if a[i].Type() != b[i].Type() {
+			return false
+		}
+
+		if !reflect.DeepEqual(a[i].Interface(), b[i].Interface()) {
+			return false
+		}
+	}
+
+	return true
 }

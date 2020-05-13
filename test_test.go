@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func Test(t *testing.T) {
+func Test_test(t *testing.T) {
 	bytes, err := json.Marshal(2)
 
 	if err != nil {
