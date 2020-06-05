@@ -12,7 +12,7 @@ package cracking_the_coding_interview_6th
 
 //看不懂的解法
 func waysToChange(n int) int {
-	ans := 0
+	//coins := []int{25, 10, 5, 1}
 
-	return ans
+	return 0
 }

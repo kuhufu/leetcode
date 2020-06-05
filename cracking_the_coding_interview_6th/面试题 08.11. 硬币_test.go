@@ -10,9 +10,9 @@ func Test_waysToChange(t *testing.T) {
 		n    int
 		want int
 	}{
+		{10, 4},
 		{1, 1},
 		{5, 2},
-		{10, 4},
 	}
 
 	for _, test := range tests {
