@@ -5,6 +5,10 @@ package leetcode
 * https://leetcode-cn.com/problems/daily-temperatures/
  */
 
+/*
+* tag: 最小栈
+ */
+
 func dailyTemperatures(T []int) []int {
 	ans := make([]int, len(T))
 	stack := make([]int, 0, len(T))
