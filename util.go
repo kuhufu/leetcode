@@ -205,50 +205,25 @@ func treeEqual(s, t *TreeNode) bool {
 
 func tree2Str(root *TreeNode) string {
 	queue := []*TreeNode{root}
-	var nodes []interface{}
 
+	var strSlice []string
 	for len(queue) != 0 {
-		size := len(queue)
-
-		var tmpArr []interface{}
-
-		for _, v := range queue {
-			if v == nil {
-				tmpArr = append(tmpArr, nil)
-			} else {
-				tmpArr = append(tmpArr, v.Val)
-			}
+		tmp := queue[0]
+		if tmp != nil {
+			queue = append(queue, tmp.Left, tmp.Right)
+			strSlice = append(strSlice, strconv.Itoa(tmp.Val))
+		} else {
+			strSlice = append(strSlice, "null")
 		}
-
-		nodes = append(nodes, tmpArr...)
-		for i := 0; i < size; i++ {
-			if queue[i] == nil {
-				continue
-			}
-
-			queue = append(queue, queue[i].Left)
-			queue = append(queue, queue[i].Right)
-		}
-
-		queue = queue[size:]
+		queue = queue[1:]
 	}
 
-	//去掉末尾的 nil
-	var i int
-	for i = len(nodes) - 1; i >= 0; i-- {
-		if nodes[i] != nil {
-			break
-		}
+	//去除尾部null
+	for i := len(strSlice) - 1; i >= 0 && strSlice[i] == "null"; i-- {
+		strSlice = strSlice[:i]
 	}
 
-	nodes = nodes[:i+1]
-
-	bytes, err := json.Marshal(&nodes)
-	if err != nil {
-		panic(err)
-	}
-
-	return string(bytes)
+	return "[" + strings.Join(strSlice, ",") + "]"
 }
 
 func Str(args ...interface{}) string {
