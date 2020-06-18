@@ -5,8 +5,8 @@ package leetcode
  */
 
 func recoverFromPreorder(S string) *TreeNode {
-	var f func(int) *TreeNode
-	f = func(curLevel int) *TreeNode {
+	var dfs func(int) *TreeNode
+	dfs = func(curLevel int) *TreeNode {
 		if S == "" {
 			return nil
 		}
@@ -30,10 +30,10 @@ func recoverFromPreorder(S string) *TreeNode {
 
 		return &TreeNode{
 			Val:   value,
-			Left:  f(level + 1),
-			Right: f(level + 1),
+			Left:  dfs(level + 1),
+			Right: dfs(level + 1),
 		}
 	}
 
-	return f(0)
+	return dfs(0)
 }
