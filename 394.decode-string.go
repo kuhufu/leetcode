@@ -24,9 +24,9 @@ func decodeString2(s string) (string, int) {
 	for ; i < len(s); i++ {
 		c := s[i]
 		switch {
-		case isDigital(c):
+		case IsDigital(c):
 			count = count*10 + int(c-'0')
-		case isAlphabet(c):
+		case IsAlphabet(c):
 			ans += s[i : i+1]
 		case c == '[':
 			tmp, idx := decodeString2(s[i+1:])
@@ -41,12 +41,4 @@ func decodeString2(s string) (string, int) {
 	}
 
 	return ans, i
-}
-
-func isDigital(c byte) bool {
-	return c >= '0' && c <= '9'
-}
-
-func isAlphabet(c byte) bool {
-	return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z'
 }
