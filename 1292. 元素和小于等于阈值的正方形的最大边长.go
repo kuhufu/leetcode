@@ -6,13 +6,6 @@ package leetcode
 * 二维前缀和 https://blog.csdn.net/qq_34990731/article/details/82807870
  */
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
 func maxSideLength(mat [][]int, threshold int) int {
 	m := len(mat)
 	n := len(mat[0])
