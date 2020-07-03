@@ -16,7 +16,7 @@ func updateMatrix(matrix [][]int) [][]int {
 		}
 	})
 
-	for k := 0; ;k++{
+	for k := 0; ; k++ {
 		notDone := false
 		ForEach(dis, func(i, j int) {
 			if dis[i][j] != k {
@@ -72,7 +72,7 @@ func Copy(m [][]int, initVal int) [][]int {
 	return clone
 }
 
-func Print(matrix [][]int)  {
+func Print(matrix [][]int) {
 	for _, a := range matrix {
 		fmt.Println(a)
 	}

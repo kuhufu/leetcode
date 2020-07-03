@@ -1,5 +1,10 @@
 package leetcode
 
+/*
+* 445. 两数相加 II
+* https://leetcode-cn.com/problems/add-two-numbers-ii/
+ */
+
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	n1 := ListLen(l1)
 	n2 := ListLen(l2)
@@ -20,7 +25,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 }
 
 func dfs(dis int, l1 *ListNode, l2 *ListNode) (*ListNode, int) {
-	if l1 == nil  {
+	if l1 == nil {
 		return nil, 0
 	}
 
