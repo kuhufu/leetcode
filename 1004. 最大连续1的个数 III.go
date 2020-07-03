@@ -27,7 +27,7 @@ func longestOnes(A []int, K int) int {
 			left++
 		}
 
-		if v := right-left; v > ans {
+		if v := right - left; v > ans {
 			ans = v
 		}
 	}

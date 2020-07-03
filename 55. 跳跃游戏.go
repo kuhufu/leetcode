@@ -15,7 +15,7 @@ func canJump(nums []int) bool {
 	endIdx := len(nums) - 1
 	for i := 0; i < len(nums)-1; i++ {
 		curMaxAccess := nums[i] + i
-		
+
 		if curMaxAccess >= endIdx {
 			return true
 		}
