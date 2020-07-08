@@ -22,33 +22,29 @@ func maxPathSum(root *TreeNode) int {
 		}
 
 		var curVal = root.Val
-		var curMax = root.Val
-		var cul = root.Val
-		var ret = root.Val
+		var curMax = root.Val //（左子树+当前节点），（当前节点），（当前节点+右子树），（当前节点+右子树+左子树）四者之间的最大值
+		var sum = root.Val    //（左子树+右子树+当前节点）的和
+		var ret = root.Val    //（左子树+当前节点），（当前节点），（当前节点+右子树）三者之间的最大值
 
 		if root.Left != nil {
 			l := f(root.Left)
-			cul += l
+			sum += l
 			curMax = max(curMax, l)
 			ret = max(ret, curVal+l)
 		}
 
 		if root.Right != nil {
 			r := f(root.Right)
-			cul += r
+			sum += r
 			curMax = max(curMax, r)
 			ret = max(ret, curVal+r)
 		}
 
-		if curMax = max(curMax, cul); curMax > ans {
+		if curMax = max(curMax, max(ret, sum)); curMax > ans {
 			ans = curMax
 		}
 
 		return ret
-	}
-
-	if v := f(root); v > ans {
-		ans = v
 	}
 
 	return ans
