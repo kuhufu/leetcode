@@ -1,4 +1,4 @@
-package cracking_the_coding_interview_6th
+package coding_interviews_2th
 
 import (
 	"github.com/kuhufu/leetcode"

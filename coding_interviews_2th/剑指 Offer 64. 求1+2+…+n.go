@@ -1,4 +1,4 @@
-package cracking_the_coding_interview_6th
+package coding_interviews_2th
 
 /*
 * 面试题64. 求1+2+…+n
