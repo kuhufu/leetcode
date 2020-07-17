@@ -9,7 +9,7 @@ package leetcode
 * 提交通过：否
  */
 
-//看题解是使用并查集解题
+//看题解是用并查集
 func equationsPossible(equations []string) bool {
 	return false
 }
