@@ -97,10 +97,23 @@ func listEqual(l1, l2 *ListNode) bool {
 
 func Equal(a, b interface{}) bool {
 	tA := reflect.TypeOf(a)
-	Tb := reflect.TypeOf(b)
+	tB := reflect.TypeOf(b)
 
-	if tA != Tb {
+	if tA != tB {
 		return false
+	}
+
+	vA := reflect.ValueOf(a)
+	vB := reflect.ValueOf(b)
+
+	switch tA.Kind() {
+	case reflect.Slice, reflect.Array:
+		for i := 0; i < vA.Len(); i++ {
+			if !Equal(vA.Index(i).Interface(), vB.Index(i).Interface()) {
+				return false
+			}
+		}
+		return true
 	}
 
 	switch a.(type) {
