@@ -5,45 +5,31 @@ import (
 )
 
 func Test_numberOfSubarrays(t *testing.T) {
-	tests := []struct {
-		nums []int
-		k    int
-		want int
-	}{
+	Run(t, numberOfSubarrays, []Test{
 		{
-			Str2Slice("[2,2,2,1,2,2,1,2,2,2]"),
-			2,
-			16,
+			Args{Slice("[2,2,2,1,2,2,1,2,2,2]").Ints(),
+				2},
+			Want{16},
 		},
 		{
-			Str2Slice("[1,1,2,1,1]"),
-			1,
-			6,
+			Args{Slice("[1,1,2,1,1]").Ints(),
+				1},
+			Want{6},
 		},
 		{
-			Str2Slice("[1,1,2,1,1]"),
-			3,
-			2,
+			Args{Slice("[1,1,2,1,1]").Ints(),
+				3},
+			Want{2},
 		},
 		{
-			Str2Slice("[1,1,2,1,1]"),
-			2,
-			5,
+			Args{Slice("[1,1,2,1,1]").Ints(),
+				2},
+			Want{5},
 		},
 		{
-			Str2Slice("[2,4,6]"),
-			1,
-			0,
+			Args{Slice("[2,4,6]").Ints(),
+				1},
+			Want{0},
 		},
-	}
-
-	for _, test := range tests {
-		test := test
-		t.Run(Str(test.nums), func(t *testing.T) {
-			res := numberOfSubarrays(test.nums, test.k)
-			if !Equal(test.want, res) {
-				t.Errorf("want %v, but got %v", test.want, res)
-			}
-		})
-	}
+	})
 }

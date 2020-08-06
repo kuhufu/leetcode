@@ -1,4 +1,4 @@
-package leetcode
+package leecode_converter
 
 type ListNode struct {
 	Val  int

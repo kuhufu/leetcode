@@ -8,23 +8,23 @@ func Test_canJump(t *testing.T) {
 
 	Run(t, canJump, []Test{
 		{
-			Args{Str2Slice("[5,9,3,2,1,0,2,3,3,1,0,0]")},
+			Args{Slice("[5,9,3,2,1,0,2,3,3,1,0,0]").Ints()},
 			Want{true},
 		},
 		{
-			Args{Str2Slice("[0,2,3]")},
+			Args{Slice("[0,2,3]").Ints()},
 			Want{false},
 		},
 		{
-			Args{Str2Slice("[0]")},
+			Args{Slice("[0]").Ints()},
 			Want{true},
 		},
 		{
-			Args{Str2Slice("[2,3,1,1,4]")},
+			Args{Slice("[2,3,1,1,4]").Ints()},
 			Want{true},
 		},
 		{
-			Args{Str2Slice("[3,2,1,0,4]")},
+			Args{Slice("[3,2,1,0,4]").Ints()},
 			Want{false},
 		},
 	})

@@ -1,14 +1,26 @@
-package leetcode
+package leecode_converter
 
 import (
 	"fmt"
 	"testing"
 )
 
-func Test_str2List(t *testing.T) {
+func Slice(s string) SliceConverter {
+	return SliceConverter(s)
+}
 
-	list := str2List("1->2->3")
-	list2 := str2List("1 -> 2 -> 3")
+func List(s string) ListConverter {
+	return ListConverter(s)
+}
+
+func Tree(s string) TreeConverter {
+	return TreeConverter(s)
+}
+
+func Test_List(t *testing.T) {
+
+	list := List("1->2->3").Parse()
+	list2 := List("1 -> 2 -> 3").Parse()
 
 	fmt.Println(list)
 	fmt.Println(list2)
@@ -19,8 +31,8 @@ func Test_list2Str(t *testing.T) {
 		list *ListNode
 		want string
 	}{
-		{str2List("1->2->3"), "1->2->3"},
-		{str2List("1 -> 2 -> 3"), "1->2->3"},
+		{List("1->2->3").Parse(), "1->2->3"},
+		{List("1 -> 2 -> 3").Parse(), "1->2->3"},
 	}
 
 	for _, test := range tests {
@@ -34,7 +46,7 @@ func Test_list2Str(t *testing.T) {
 	}
 }
 
-func Test_str2Slice(t *testing.T) {
+func Test_Slice(t *testing.T) {
 	tests := []struct {
 		s    string
 		want []int
@@ -46,7 +58,7 @@ func Test_str2Slice(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(test.s, func(t *testing.T) {
-			res := Str2Slice(test.s)
+			res := Slice(test.s).Ints()
 			if !Equal(res, test.want) {
 				t.Errorf("want %v, but got %v", test.want, res)
 			}
@@ -81,8 +93,8 @@ func Test_ListEqual(t *testing.T) {
 
 		want bool
 	}{
-		{str2List("1->2->3"), str2List("1->2->3"), true},
-		{str2List("1->2->3"), str2List("1->2"), false},
+		{List("1->2->3").Parse(), List("1->2->3").Parse(), true},
+		{List("1->2->3").Parse(), List("1->2").Parse(), false},
 	}
 
 	for _, test := range tests {
@@ -103,8 +115,7 @@ func Test_Equal(t *testing.T) {
 
 		want bool
 	}{
-		{str2List("1->2->3"), str2List("1->2->3"), true},
-
+		{List("1->2->3").Parse(), List("1->2->3").Parse(), true},
 		{1, 1, true},
 		{1, 2, false},
 		{[]int{1, 2}, []int{1, 2}, true},
@@ -134,8 +145,8 @@ func Test_listArr2str(t *testing.T) {
 	}{
 		{
 			[]*ListNode{
-				str2List("1->4->5"),
-				str2List("1->3->4"),
+				List("1->4->5").Parse(),
+				List("1->3->4").Parse(),
 			},
 			"[1->4->5,1->3->4]",
 		},
@@ -174,7 +185,7 @@ func Test_str2Tree(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(test.str, func(t *testing.T) {
-			res := Str2Tree(test.str)
+			res := Tree(test.str).Parse()
 			if !Equal(test.want, res) {
 				t.Errorf("want %v, but got %v", test.want, res)
 			}

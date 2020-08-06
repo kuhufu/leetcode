@@ -1,29 +1,18 @@
 package leetcode
 
-import "testing"
+import (
+	"testing"
+)
 
 func Test_levelOrder(t *testing.T) {
-	tests := []struct {
-		root *TreeNode
-		want [][]int
-	}{
+	Run(t, levelOrder, []Test{
 		{
-			Str2Tree("[3,9,20,null,null,15,7]"),
-			Str22DSlice(`[[3],[9,20],[15,7]]`),
+			Args{Tree("[3,9,20,null,null,15,7]").Parse()},
+			Want{Slice(`[[3],[9,20],[15,7]]`).DInts()},
 		},
 		{
-			Str2Tree("[]"),
-			nil,
+			Args{Tree("[]").Parse()},
+			Want{nil},
 		},
-	}
-
-	for _, test := range tests {
-		test := test
-		t.Run(Str(test.root), func(t *testing.T) {
-			res := levelOrder(test.root)
-			if !Equal(test.want, res) {
-				t.Errorf("want %v, but got %v", test.want, res)
-			}
-		})
-	}
+	})
 }

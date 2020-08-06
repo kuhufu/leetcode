@@ -1,7 +1,6 @@
 package cracking_the_coding_interview_6th
 
 import (
-	. "github.com/kuhufu/leetcode"
 	"testing"
 )
 

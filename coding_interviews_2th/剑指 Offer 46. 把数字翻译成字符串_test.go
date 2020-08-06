@@ -1,7 +1,6 @@
 package coding_interviews_2th
 
 import (
-	. "github.com/kuhufu/leetcode"
 	"testing"
 )
 

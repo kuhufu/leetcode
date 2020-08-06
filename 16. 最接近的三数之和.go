@@ -19,7 +19,7 @@ func threeSumClosest(nums []int, target int) int {
 		for j < k {
 			sum := nums[i] + nums[j] + nums[k]
 			curDis := sum - target
-			if Abs(curDis) < Abs(dis) {
+			if abs(curDis) < abs(dis) {
 				ans = sum
 				dis = curDis
 			}

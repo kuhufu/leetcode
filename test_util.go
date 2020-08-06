@@ -2,6 +2,7 @@ package leetcode
 
 import (
 	"fmt"
+	"github.com/kuhufu/leetcode/leecode_converter"
 	"reflect"
 	"testing"
 )
@@ -24,7 +25,7 @@ func Run(t *testing.T, fn0 interface{}, tests []Test) {
 		test := test
 		t.Run(Str(test.Args...), func(t *testing.T) {
 			res := toInterfaceSlice(fn.Call(buildArgs(test.Args)))
-			if !Equal(test.Want, res) {
+			if !leecode_converter.Equal(test.Want, res) {
 				t.Errorf("want %v, but got %v", test.Want, res)
 			}
 		})

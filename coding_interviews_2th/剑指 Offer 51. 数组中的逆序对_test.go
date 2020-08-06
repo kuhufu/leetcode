@@ -1,37 +1,22 @@
 package coding_interviews_2th
 
 import (
-	"github.com/kuhufu/leetcode"
 	"testing"
 )
 
 func Test_reversePairs(t *testing.T) {
-	tests := []struct {
-		nums []int
-		want int
-	}{
+	Run(t, reversePairs, []Test{
 		{
-			[]int{1, 3, 2, 3, 1},
-			4,
+			Args{Slice("[1,3,2,3,1]").Ints()},
+			Want{4},
 		},
 		{
-			[]int{7, 7, 5, 6, 7, 4},
-			9,
+			Args{Slice("[7,7,5,6,7,4]").Ints()},
+			Want{9},
 		},
 		{
-			[]int{7, 5, 6, 4},
-			5,
+			Args{Slice("[7,5,6,4]").Ints()},
+			Want{5},
 		},
-	}
-
-	for _, test := range tests {
-		test := test
-
-		t.Run(leetcode.Str(test.nums), func(t *testing.T) {
-			res := reversePairs(test.nums)
-			if !leetcode.Equal(test.want, res) {
-				t.Errorf("want %v, but got %v", test.want, res)
-			}
-		})
-	}
+	})
 }

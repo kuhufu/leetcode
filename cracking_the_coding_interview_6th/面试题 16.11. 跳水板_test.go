@@ -1,7 +1,6 @@
 package cracking_the_coding_interview_6th
 
 import (
-	. "github.com/kuhufu/leetcode"
 	"testing"
 )
 
@@ -13,7 +12,7 @@ func Test_divingBoard(t *testing.T) {
 		},
 		{
 			Args{1, 2, 3},
-			Want{Str2Slice("[3,4,5,6]")},
+			Want{Slice("[3,4,5,6]").Ints()},
 		},
 	})
 }

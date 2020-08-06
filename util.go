@@ -1,28 +1,10 @@
 package leetcode
 
-import (
-	"strconv"
-)
-
-func Min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
-func Max(a, b int) int {
+func max(a, b int) int {
 	if a > b {
 		return a
 	}
 	return b
-}
-
-func max(x, y int) int {
-	if x > y {
-		return x
-	}
-	return y
 }
 
 func min(a, b int) int {
@@ -32,20 +14,11 @@ func min(a, b int) int {
 	return b
 }
 
-func Abs(a int) int {
+func abs(a int) int {
 	if a < 0 {
 		return -a
 	}
 	return a
-}
-
-func Atoi(s string) int {
-	i, err := strconv.Atoi(s)
-	if err != nil {
-		panic(err)
-	}
-
-	return i
 }
 
 func IsDigital(c byte) bool {

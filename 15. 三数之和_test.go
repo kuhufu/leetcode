@@ -6,12 +6,12 @@ func Test_treeSum(t *testing.T) {
 	Run(t, threeSum, []Test{
 
 		{
-			Args{Str2Slice("[-1, 0, 1, 2, -1, -4]")},
-			Want{Str22DSlice("[[-1, -1, 2],[-1, 0, 1]]")},
+			Args{Slice("[-1, 0, 1, 2, -1, -4]").Ints()},
+			Want{Slice("[[-1, -1, 2],[-1, 0, 1]]").DInts()},
 		},
 		{
-			Args{Str2Slice("[0,0,0,0]")},
-			Want{Str22DSlice("[[0,0,0]]")},
+			Args{Slice("[0,0,0,0]").Ints()},
+			Want{Slice("[[0,0,0]]").DInts()},
 		},
 	})
 }

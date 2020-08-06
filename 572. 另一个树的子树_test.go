@@ -1,57 +1,45 @@
 package leetcode
 
-import "testing"
+import (
+	"testing"
+)
 
 func Test_isSubtree(t *testing.T) {
-	tests := []struct {
-		s    *TreeNode
-		t    *TreeNode
-		want bool
-	}{
+	Run(t, isSubtree, []Test{
 		{
-			Str2Tree("[1,2,3]"),
-			Str2Tree("[1,2]"),
-			false,
+			Args{Tree("[1,2,3]").Parse(),
+				Tree("[1,2]").Parse()},
+			Want{false},
 		},
 		{
-			Str2Tree("[4,-9,5,null,-1,null,8,-6,0,7,null,null,-2,null,null,null,null,-3]"),
-			Str2Tree("[5]"),
-			false,
+			Args{Tree("[4,-9,5,null,-1,null,8,-6,0,7,null,null,-2,null,null,null,null,-3]").Parse(),
+				Tree("[5]").Parse()},
+			Want{false},
 		},
 		{
-			Str2Tree("[3,4,5,1,2,null,null,0]"),
-			Str2Tree("[4,1,2]"),
-			false,
+			Args{Tree("[3,4,5,1,2,null,null,0]").Parse(),
+				Tree("[4,1,2]").Parse()},
+			Want{false},
 		},
 		{
-			Str2Tree("[-1,-4,8,-6,-2,3,9,null,-5,null,null,0,7]"),
-			Str2Tree("[3,0,5848]"),
-			false,
+			Args{Tree("[-1,-4,8,-6,-2,3,9,null,-5,null,null,0,7]").Parse(),
+				Tree("[3,0,5848]").Parse()},
+			Want{false},
 		},
 		{
-			Str2Tree("[3,4,5,1,2]"),
-			Str2Tree("[4,1,2]"),
-			true,
+			Args{Tree("[3,4,5,1,2]").Parse(),
+				Tree("[4,1,2]").Parse()},
+			Want{true},
 		},
 		{
-			Str2Tree("[3,4,5,1,null,2]"),
-			Str2Tree("[3,1,2]"),
-			false,
+			Args{Tree("[3,4,5,1,null,2]").Parse(),
+				Tree("[3,1,2]").Parse()},
+			Want{false},
 		},
 		{
-			Str2Tree("[3,4,5,1,2,null,null,null,null,0]"),
-			Str2Tree("[4,1,2]"),
-			false,
+			Args{Tree("[3,4,5,1,2,null,null,null,null,0]").Parse(),
+				Tree("[4,1,2]").Parse()},
+			Want{false},
 		},
-	}
-
-	for _, test := range tests {
-		test := test
-		t.Run(Str(test.s, test.t), func(t *testing.T) {
-			res := isSubtree2(test.s, test.t)
-			if !Equal(test.want, res) {
-				t.Errorf("want %v, but got %v", test.want, res)
-			}
-		})
-	}
+	})
 }

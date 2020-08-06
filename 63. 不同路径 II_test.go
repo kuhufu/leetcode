@@ -5,20 +5,20 @@ import "testing"
 func Test_uniquePathsWithObstacles(t *testing.T) {
 	Run(t, uniquePathsWithObstacles, []Test{
 		{
-			Args{Str22DSlice("[[0,0],[1,0]]")},
+			Args{Slice("[[0,0],[1,0]]").DInts()},
 			Want{1},
 		},
 		{
-			Args{Str22DSlice("[[0,0,0],[0,1,0],[0,0,0]]")},
+			Args{Slice("[[0,0,0],[0,1,0],[0,0,0]]").DInts()},
 			Want{2},
 		},
 
 		{
-			Args{Str22DSlice("[[1]]")},
+			Args{Slice("[[1]]").DInts()},
 			Want{0},
 		},
 		{
-			Args{Str22DSlice("[[0,1]]")},
+			Args{Slice("[[0,1]]").DInts()},
 			Want{0},
 		},
 	})
