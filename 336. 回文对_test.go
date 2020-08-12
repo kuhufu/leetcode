@@ -16,7 +16,7 @@ func Test_palindromePairs(t *testing.T) {
 }
 
 func Test_findWord(t *testing.T) {
-	tree := &Node{}
+	tree := &TireTree{}
 	tree.make([]string{
 		"a",
 		"abc",

@@ -61,22 +61,22 @@ func palindromePairs(words []string) [][]int {
 	return ans
 }
 
-type Node struct {
-	ch  [26]*Node
+type TireTree struct {
+	ch  [26]*TireTree
 	end bool
 }
 
-func (n *Node) make(words []string) {
+func (n *TireTree) make(words []string) {
 	for _, word := range words {
 		n.insert(word)
 	}
 }
 
-func (n *Node) insert(word string) {
+func (n *TireTree) insert(word string) {
 	cur := n
 	for _, ch := range word {
 		if cur.ch[ch-'a'] == nil {
-			cur.ch[ch-'a'] = &Node{}
+			cur.ch[ch-'a'] = &TireTree{}
 		}
 		cur = cur.ch[ch-'a']
 	}
@@ -84,7 +84,7 @@ func (n *Node) insert(word string) {
 	cur.end = true
 }
 
-func (n *Node) findWord(word string) bool {
+func (n *TireTree) findWord(word string) bool {
 	cur := n
 	for _, v := range word {
 		if cur == nil {
