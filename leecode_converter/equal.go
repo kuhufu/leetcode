@@ -2,6 +2,10 @@ package leecode_converter
 
 import "reflect"
 
+func graphEqual(n1, n2 *Node) bool {
+	return str(n1) == str(n2)
+}
+
 //有环链表不适用
 func listEqual(l1, l2 *ListNode) bool {
 	for l1 != nil && l2 != nil {
@@ -45,6 +49,8 @@ func Equal(a, b interface{}) bool {
 	}
 
 	switch a.(type) {
+	case *Node:
+		return graphEqual(a.(*Node), b.(*Node))
 	case *ListNode:
 		return listEqual(a.(*ListNode), b.(*ListNode))
 	case *TreeNode:

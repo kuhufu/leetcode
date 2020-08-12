@@ -26,6 +26,36 @@ func list2Str(l *ListNode) string {
 	return strings.Join(vals, "->")
 }
 
+func graph2Str(node *Node) string {
+	visited := map[int]*Node{}
+
+	var dfs func(*Node)
+	dfs = func(node *Node) {
+		if _, ok := visited[node.Val]; ok {
+			return
+		}
+
+		visited[node.Val] = node
+
+		for _, neighbor := range node.Neighbors {
+			dfs(neighbor)
+		}
+	}
+
+	dfs(node)
+
+	arr := make([][]int, len(visited))
+
+	for i := 0; i < len(arr); i++ {
+		for _, neighbor := range visited[i+1].Neighbors {
+			arr[i] = append(arr[i], neighbor.Val)
+		}
+	}
+
+	bytes, _ := json.Marshal(arr)
+	return string(bytes)
+}
+
 func listArr2Str(arr []*ListNode) string {
 	var strArr []string
 
@@ -61,6 +91,8 @@ func tree2Str(root *TreeNode) string {
 
 func str(v interface{}) string {
 	switch v := v.(type) {
+	case *Node:
+		return graph2Str(v)
 	case *TreeNode:
 		return tree2Str(v)
 	case *ListNode:
