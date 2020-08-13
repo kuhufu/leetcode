@@ -1,9 +1,7 @@
 package leetcode
 
 import (
-	"reflect"
 	"strings"
-	"unsafe"
 )
 
 /*
@@ -104,15 +102,4 @@ func generateZero(n int) string {
 	}
 
 	return builder.String()
-}
-
-func bytes2String(bytes []byte) string {
-	p := (*reflect.SliceHeader)(unsafe.Pointer(&bytes))
-
-	s := reflect.StringHeader{
-		Data: p.Data,
-		Len:  p.Len,
-	}
-
-	return *(*string)(unsafe.Pointer(&s))
 }
