@@ -1,9 +1,5 @@
 package leetcode
 
-import (
-	"strings"
-)
-
 /*
 * 43. 字符串相乘
 * https://leetcode-cn.com/problems/multiply-strings/
@@ -15,10 +11,12 @@ func multiply(num1 string, num2 string) string {
 	}
 
 	ans := "0"
+	zero := ""
 	for i := 0; i < len(num2); i++ {
 		s := num2[len(num2)-1-i]
-		v := multi(num1, s) + generateZero(i)
+		v := multi(num1, s) + zero
 		ans = add(ans, v)
+		zero += "0"
 	}
 
 	return ans
@@ -91,15 +89,4 @@ func add(num1 string, num2 string) string {
 	}
 
 	return string(ans[1:])
-}
-
-func generateZero(n int) string {
-	builder := strings.Builder{}
-	builder.Grow(n)
-
-	for i := 0; i < n; i++ {
-		builder.WriteByte('0')
-	}
-
-	return builder.String()
 }
