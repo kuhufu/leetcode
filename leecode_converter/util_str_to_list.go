@@ -12,7 +12,11 @@ func (l ListConverter) Parse() *ListNode {
 	res := &ListNode{}
 	s = strings.ReplaceAll(s, " ", "")
 	s = strings.ReplaceAll(s, "\t", "")
-	items := strings.Split(s, "->")
+	s = strings.ReplaceAll(s, "[", "")
+	s = strings.ReplaceAll(s, "]", "")
+	s = strings.ReplaceAll(s, "->", ",")
+
+	items := strings.Split(s, ",")
 
 	cur := res
 	for _, item := range items {
