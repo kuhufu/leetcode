@@ -5,11 +5,14 @@ package leetcode
 * https://leetcode-cn.com/problems/minesweeper/
  */
 
-var directions = [][]int{{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}}
+var directions = [][]int{
+	{-1, -1}, {-1, 0}, {-1, 1},
+	{0, -1}, {0, 1},
+	{1, -1}, {1, 0}, {1, 1},
+}
 
 func updateBoard(board [][]byte, click []int) [][]byte {
-	i := click[0]
-	j := click[1]
+	i, j := click[0], click[1]
 	if board[i][j] == 'M' {
 		board[i][j] = 'X'
 		return board
