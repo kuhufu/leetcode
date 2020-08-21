@@ -14,12 +14,12 @@ func Slice(s string) leecode_converter.SliceConverter {
 	return leecode_converter.SliceConverter(s)
 }
 
-func List(s string) leecode_converter.ListConverter {
-	return leecode_converter.ListConverter(s)
+func List(s string) *ListNode {
+	return leecode_converter.ListConverter(s).Parse()
 }
 
-func Tree(s string) leecode_converter.TreeConverter {
-	return leecode_converter.TreeConverter(s)
+func Tree(s string) *TreeNode {
+	return leecode_converter.TreeConverter(s).Parse()
 }
 
 func Graph(s string) leecode_converter.GraphConverter {

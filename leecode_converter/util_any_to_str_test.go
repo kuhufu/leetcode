@@ -10,8 +10,8 @@ func Test_graph2Str(t *testing.T) {
 		Graph *Node
 		want  string
 	}{
-		{Graph("[[2,4],[1,3],[2,4],[1,3]]").Parse(), "[[2,4],[1,3],[2,4],[1,3]]"},
-		{Graph("[[2,4],[1,3],[2,4],[1,3]]").Parse(), "[[2,4],[1,3],[2,4],[1,3]]"},
+		{Graph("[[2,4],[1,3],[2,4],[1,3]]"), "[[2,4],[1,3],[2,4],[1,3]]"},
+		{Graph("[[2,4],[1,3],[2,4],[1,3]]"), "[[2,4],[1,3],[2,4],[1,3]]"},
 	}
 
 	for _, test := range tests {
@@ -30,8 +30,8 @@ func Test_list2Str(t *testing.T) {
 		list *ListNode
 		want string
 	}{
-		{List("1->2->3").Parse(), "1->2->3"},
-		{List("1 -> 2 -> 3").Parse(), "1->2->3"},
+		{List("1->2->3"), "1->2->3"},
+		{List("1 -> 2 -> 3"), "1->2->3"},
 	}
 
 	for _, test := range tests {
@@ -72,8 +72,8 @@ func Test_listArr2str(t *testing.T) {
 	}{
 		{
 			[]*ListNode{
-				List("1->4->5").Parse(),
-				List("1->3->4").Parse(),
+				List("1->4->5"),
+				List("1->3->4"),
 			},
 			"[1->4->5,1->3->4]",
 		},

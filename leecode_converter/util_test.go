@@ -23,8 +23,8 @@ func Graph(s string) GraphConverter {
 
 func Test_List(t *testing.T) {
 
-	list := List("1->2->3").Parse()
-	list2 := List("1 -> 2 -> 3").Parse()
+	list := List("1->2->3")
+	list2 := List("1 -> 2 -> 3")
 
 	fmt.Println(list)
 	fmt.Println(list2)
@@ -57,8 +57,8 @@ func Test_ListEqual(t *testing.T) {
 
 		want bool
 	}{
-		{List("1->2->3").Parse(), List("1->2->3").Parse(), true},
-		{List("1->2->3").Parse(), List("1->2").Parse(), false},
+		{List("1->2->3").Parse(), List("1->2->3"), true},
+		{List("1->2->3").Parse(), List("1->2"), false},
 	}
 
 	for _, test := range tests {
@@ -79,7 +79,7 @@ func Test_Equal(t *testing.T) {
 
 		want bool
 	}{
-		{List("1->2->3").Parse(), List("1->2->3").Parse(), true},
+		{List("1->2->3").Parse(), List("1->2->3"), true},
 		{1, 1, true},
 		{1, 2, false},
 		{[]int{1, 2}, []int{1, 2}, true},
@@ -124,7 +124,7 @@ func Test_str2Tree(t *testing.T) {
 	for _, test := range tests {
 		test := test
 		t.Run(test.str, func(t *testing.T) {
-			res := Tree(test.str).Parse()
+			res := Tree(test.str)
 			if !Equal(test.want, res) {
 				t.Errorf("want %v, but got %v", test.want, res)
 			}
