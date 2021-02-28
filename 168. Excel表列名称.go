@@ -10,7 +10,7 @@ package leetcode
 func convertToTitle(n int) string {
 	res := ""
 	for n > 0 {
-		res = string((n-1)%26+'A') + res
+		res = string(byte((n-1)%26)+'A') + res
 		n = (n - 1) / 26
 	}
 	return res
