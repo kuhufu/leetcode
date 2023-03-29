@@ -2,6 +2,7 @@ package leetcode
 
 import (
 	"reflect"
+	"strconv"
 	"unsafe"
 )
 
@@ -48,4 +49,17 @@ func string2Bytes(s string) []byte {
 	}
 
 	return *(*[]byte)(unsafe.Pointer(&cp))
+}
+
+func toInt(c string) int {
+	i, _ := strconv.Atoi(c)
+	return i
+}
+
+func sumInt(list []int) int {
+	var ret int
+	for _, v := range list {
+		ret += v
+	}
+	return ret
 }
